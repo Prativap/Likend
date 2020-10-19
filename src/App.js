@@ -1,5 +1,5 @@
 import React ,{useState,useEffect} from 'react';
-import jdata from './Jsondata.json';
+//import jdata from './Jsondata.json';
 import likendclick from './like-icon-filled.png';
 import unlikeclick from './donot_like-icon.png';
 import './App.css';
@@ -9,17 +9,20 @@ function App() {
     const axiosport = axios.create({
         baseURL: 'http://localhost:8080',
     }) ; 
+
     useEffect(()=>{
-      check()
-    });
+      console.log("use effect executed");
+     check()
+    },[]);
+
 const currentfriend ="ish"
 const currentitem=99;
 console.log("Prcocessunlikend"+currentfriend)
 
 const processunlikened = async () => {try {
    //console.log("Prcocessunlikend"+currentfriend)
-  
-    const  result =   await  axiosport.post(`/unlike/${currentfriend}/${currentitem}`)
+  // "/check/:id/:user"
+    const  result =   await  axiosport.post(`/unlike/${currentitem}/${currentfriend}`)
     setCounter(currentcount - 1);
     return result.data ;
   } catch(error) {
@@ -29,14 +32,14 @@ const processunlikened = async () => {try {
     return error ;
      
   }
-
-  };
+}
+ 
   const check = async () => {try {
-    const  result =   await  axiosport.get(`/check/${currentfriend}/${currentitem}`)
+    const  result =   await  axiosport.get(`/check/${currentitem}/${currentfriend}`)
       setCounter(1);
-     // return result.data;
+       return result.data;
     } catch(error) {
-      setCounter(0);
+       setCounter(0)
       // if (JSON.stringify(error).includes(599))
       //    { alert ("Not Liked Yet ")}
       // return error ;
@@ -45,7 +48,7 @@ const processunlikened = async () => {try {
   
     };
 const processlikened = async () => {try {
-    const  result =   await  axiosport.post(`/like/${currentfriend}/${currentitem}`)
+    const  result =   await  axiosport.post(`/like/${currentitem}/${currentfriend}`)
     setCounter(currentcount + 1);
     return result.data ;
   } catch(error) {
@@ -56,7 +59,7 @@ const processlikened = async () => {try {
      
   }
 
-  };
+}
 const handleClick =() => {
  processlikened();
     }

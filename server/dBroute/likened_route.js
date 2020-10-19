@@ -55,7 +55,7 @@ router.route("/like/:id/:user").post((request, response)=>
    collection.findOne(ldoc, (error, result) => {
              
            if(error) {
-               return response.status(529).send(error);
+               return response.status(579).send(error);
            }
            response.send(result);
        });
