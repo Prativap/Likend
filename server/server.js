@@ -36,8 +36,9 @@ app.listen(PORT, () => {
 
        // collection = database.collection(COLLECTION_NAME);
         
-          app.use('/likened',router); 
-          app.use('/unlikened',router); 
+          app.use('/like',router); 
+          app.use('/unlike',router); 
+          app.use('/check',router);
           app.use('/',router); 
         console.log(`Server is running on port: ${PORT}`);
         console.log(`Connected to DB: ${DATABASE_NAME} collection: ${COLLECTION_NAME} `);

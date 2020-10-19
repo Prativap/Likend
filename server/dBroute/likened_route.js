@@ -24,7 +24,7 @@ const  setCollection = (db) =>{collection = db.collection(COLLECTION_NAME);}
 const  setRouter = (router) =>{ 
 
 //router.route("/Dress/:id").put((request, response)=>
-router.route("/likened/:id/:user").post((request, response)=>  
+router.route("/like/:id/:user").post((request, response)=>  
 
  { 
   const id = request.params.id;
@@ -42,11 +42,29 @@ router.route("/likened/:id/:user").post((request, response)=>
           response.send(result);
       });
   });
+  router.route("/check/:id/:user").get((request, response)=>  
 
+  { 
+   const id = request.params.id;
+   const user = request.params.user ;
+   var ldoc = {};
+   ldoc['likedby'] = user
+   ldoc['likeditem'] = id;
+  
+   
+   collection.findOne(ldoc, (error, result) => {
+             
+           if(error) {
+               return response.status(529).send(error);
+           }
+           response.send(result);
+       });
+   });
  
  
  
-router.route("/unlikened/:id/:user").post((request, response)=>  
+ 
+router.route("/unlike/:id/:user").post((request, response)=>  
  {
     const id = request.params.id;
     const user = request.params.user ;
@@ -69,8 +87,8 @@ router.route("/unlikened/:id/:user").post((request, response)=>
 
   return router ;
  }
+ exports.setRouter  = setRouter
   
-exports.setRouter  = setRouter
 exports.routeme = router;
 exports.setCollection = setCollection
 exports.createCompoundIndex =  createCompoundIndex
