@@ -1,23 +1,55 @@
 import React ,{useState,useEffect} from 'react';
-//import jdata from './Jsondata.json';
+import jdata from './Jsondata.json';
 import likendclick from './like-icon-filled.png';
 import unlikeclick from './donot_like-icon.png';
 import './App.css';
 import axios from 'axios';
+import Select from 'react-select';
 
 function App() {
     const axiosport = axios.create({
         baseURL: 'http://localhost:8080',
     }) ; 
-
+  const [selectOptions,setSelectOptions]=useState([])
+  const [id,setId]=useState("")
+  const [name,setName]=useState("")
+    const getOptions= ()=>{
+    
+//   for (var i = 0; i < jdata.length; i++) {
+//     //console.log("looping friends"+JSON.stringify(jdata[i])+friends.join())
+//     friends.push(jdata[i].favname);
+    
+  
+//   //  console.log(friends.join()+"friends");
+// }
+      
+  
+      const options = jdata.map(d => ({
+        "value" : d.age,
+        "label" : d.nickname
+  
+      }))
+  
+      //this.setState({selectOptions: options})
+      setSelectOptions(options)
+  
+    }
     useEffect(()=>{
       console.log("use effect executed");
-     check()
+     check();
+     getOptions();
     },[]);
+    const handleChange =(e)=>{
+      //this.setState({id:e.value, name:e.label})
+      setId(e.value)
+      setName(e.label)
+     }
 
-const currentfriend ="ish"
+
+
+const currentfriend =jdata[1].nickname;
 const currentitem=99;
-console.log("Prcocessunlikend"+currentfriend)
+console.log("name fetched:"+currentfriend)
 
 const processunlikened = async () => {try {
    //console.log("Prcocessunlikend"+currentfriend)
@@ -69,7 +101,11 @@ const [currentcount,setCounter] = useState(0);
   
   return (
     <div className="App">
+      <Select options={selectOptions} onChange={handleChange} />
+      <p>You have selected <strong>{name}</strong> whose age is <strong>{id}</strong></p>
+
      <button  onClick={handleClick} >
+       
        <img src={likendclick}/>
       </button>
       Count is :{currentcount}
@@ -77,6 +113,7 @@ const [currentcount,setCounter] = useState(0);
      <button  onClick={handleClick2} >
        <img src={unlikeclick}/>
       </button>
+      
     </div>
    
         );

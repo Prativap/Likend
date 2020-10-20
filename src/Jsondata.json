@@ -1,4 +1,15 @@
-{
-    "name" :"Isha",
-    "age" : 25
+ [{
+    "nickname" :"Isha",
+    "age" : "25",
+    "favname" : "Ish"
+    
+},{
+    "nickname" :"Monster",
+    "age" : "30",
+    "favname" : "Mon"
+},{
+    "nickname" :"Rose",
+    "age" : "20",
+    "favname" : "Love" 
 }
+]
