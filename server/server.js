@@ -3,8 +3,11 @@ const cors = require("cors");
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
 
+
 //var express = require('express');
 var router = Express.Router();
+const  likenedrouter = require("./dBroute/likened_route.js") ;
+
 
 const CONNECTION_URL = 'mongodb://localhost:27017/';
 const DATABASE_NAME = "like_db";
