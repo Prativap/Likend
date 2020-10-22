@@ -15,7 +15,7 @@ const PORT = 8080;
 const app = Express();
 
 //router = dressrouter.setRouter(router);
-router = likenedrouter.setRouter(router);
+//router = likenedrouter.setRouter(router);
 app.use(cors());
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }));
