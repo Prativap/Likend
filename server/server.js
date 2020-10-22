@@ -5,9 +5,13 @@ const ObjectId = require("mongodb").ObjectID;
 
 
 //var express = require('express');
-var router = Express.Router();
+
+//var router = Express.Router();
 const  likenedrouter = require("./dBroute/likened_route.js") ;
 
+
+//var router = Express.Router();
+ 
 
 const CONNECTION_URL = 'mongodb://localhost:27017/';
 const DATABASE_NAME = "like_db";
@@ -17,7 +21,7 @@ const PORT = 8080;
 const app = Express();
 
 //router = dressrouter.setRouter(router);
-router = likenedrouter.setRouter(router);
+//router = likenedrouter.setRouter(router);
 app.use(cors());
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }));
@@ -36,10 +40,12 @@ app.listen(PORT, () => {
         likenedrouter.setCollection(database);  //  <===
         likenedrouter.createCompoundIndex(database);  
        // collection = database.collection(COLLECTION_NAME);
-        app.use('/like',router); 
-          app.use('/unlike',router); 
-          app.use('/check',router);
-          app.use('/',router); 
+
+        
+          app.use('/like', likenedrouter); 
+          app.use('/unlike', likenedrouter); 
+          app.use('/check', likenedrouter);
+          app.use('/', likenedrouter); 
         console.log(`Server is running on port: ${PORT}`);
         console.log(`Connected to DB: ${DATABASE_NAME} collection: ${COLLECTION_NAME} `);
     });
