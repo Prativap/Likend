@@ -13,6 +13,7 @@ function App() {
   const [selectOptions,setSelectOptions]=useState([])
   const [id,setId]=useState("")
   const [name,setName]=useState("")
+  const [currentfriend,setCurrentfriend]=useState("")
     const getOptions= ()=>{
     
 //   for (var i = 0; i < jdata.length; i++) {
@@ -29,8 +30,11 @@ function App() {
         "label" : d.nickname
   
       }))
-  
-      //this.setState({selectOptions: options})
+     var noValue={};
+     noValue.label="" 
+     noValue.value="" 
+    //noValue.label or noValue["label"]
+    //this.setState({selectOptions: options})
       setSelectOptions(options)
   
     }
@@ -43,13 +47,15 @@ function App() {
       //this.setState({id:e.value, name:e.label})
       setId(e.value)
       setName(e.label)
+      setCurrentfriend(e.label)
      }
 
 
 
-const currentfriend =jdata[1].nickname;
+//const currentfriend =jdata[1].nickname;
+
 const currentitem=99;
-console.log("name fetched:"+currentfriend)
+//console.log("name fetched:"+currentfriend)
 
 const processunlikened = async () => {try {
    //console.log("Prcocessunlikend"+currentfriend)

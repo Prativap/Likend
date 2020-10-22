@@ -3,7 +3,6 @@ const cors = require("cors");
 const MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectID;
 
-const  likenedrouter = require("./dBroute/likened_route.js") ;
 //var express = require('express');
 var router = Express.Router();
 
@@ -33,10 +32,8 @@ app.listen(PORT, () => {
         database = client.db(DATABASE_NAME);
         likenedrouter.setCollection(database);  //  <===
         likenedrouter.createCompoundIndex(database);  
-
        // collection = database.collection(COLLECTION_NAME);
-        
-          app.use('/like',router); 
+        app.use('/like',router); 
           app.use('/unlike',router); 
           app.use('/check',router);
           app.use('/',router); 
