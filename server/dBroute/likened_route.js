@@ -87,8 +87,8 @@ router.route("/unlike/:id/:user").post((request, response)=>
 
   return router ;
  }
- exports.setRouter  = setRouter
+ //exports.setRouter  = setRouter
   
-exports.routeme = router;
+//exports.routeme = router;
 exports.setCollection = setCollection
 exports.createCompoundIndex =  createCompoundIndex

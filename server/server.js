@@ -1,7 +1,7 @@
 const Express = require("express");
 const cors = require("cors");
 const MongoClient = require("mongodb").MongoClient;
-const ObjectId = require("mongodb").ObjectID;
+//const ObjectId = require("mongodb").ObjectID;
 
 
 //var express = require('express');
@@ -27,7 +27,7 @@ app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }));
 
 
-var database, collection; 
+var database; //collection; 
 
 //----------------Connect to DB--------------------------
  
